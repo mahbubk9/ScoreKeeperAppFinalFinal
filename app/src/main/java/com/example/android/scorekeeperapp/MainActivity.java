@@ -15,8 +15,31 @@ public class MainActivity extends AppCompatActivity {
     int overTeamB=0;
     int ballTeamB=0;
     int wktTeamB=0;
-    static final String TEAM_A_RUN = "0";
-    static final String TEAM_A_OVER = "0";
+    int runDiff= runTeamA-runTeamB;
+    int wktDiff=10-wktTeamB;
+    static final String TEAM_A_RUN = "teamARun";
+    static final String TEAM_A_BALL = "teamABall";
+    static final String TEAM_A_OVER = "teamAOver";
+    static final String TEAM_A_WKT = "teamAWkt";
+    static final String TEAM_B_RUN = "teamBRun";
+    static final String TEAM_B_BALL = "teamBBall";
+    static final String TEAM_B_OVER = "teamBOver";
+    static final String TEAM_B_WKT = "teamBWkt";
+    static  final String RESULT_CHOICE="1 for teamA win, 2 for tamB win, 3 for draw";
+
+    String commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+    String commentryB="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+"."+ballTeamB+" Overs.";
+    String teamAWin= "TeamA Won The Game By " +runDiff+ " runs!" ;
+    String teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+    String draw= "The Game is Drawn!";
+    int resultChoice=0;
+
+
+
+
+
+
+
 
 
 
@@ -34,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         // Save the user's current game state
         savedInstanceState.putInt(TEAM_A_RUN, runTeamA);
         savedInstanceState.putInt(TEAM_A_OVER, overTeamA);
+        savedInstanceState.putInt(TEAM_A_BALL,ballTeamA);
+        savedInstanceState.putInt(TEAM_A_WKT,wktTeamA);
+        savedInstanceState.putInt(TEAM_B_RUN,runTeamB);
+        savedInstanceState.putInt(TEAM_B_BALL,ballTeamB);
+        savedInstanceState.putInt(TEAM_B_OVER,overTeamB);
+        savedInstanceState.putInt(TEAM_B_WKT,wktTeamB);
+        savedInstanceState.putInt(RESULT_CHOICE,resultChoice);
 
         // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
@@ -46,6 +76,48 @@ public class MainActivity extends AppCompatActivity {
         // Restore state members from saved instance
         runTeamA = savedInstanceState.getInt(TEAM_A_RUN);
         overTeamA = savedInstanceState.getInt(TEAM_A_OVER);
+        wktTeamA=savedInstanceState.getInt(TEAM_A_WKT);
+        ballTeamA=savedInstanceState.getInt(TEAM_A_BALL);
+        runTeamB=savedInstanceState.getInt(TEAM_B_RUN);
+        ballTeamB=savedInstanceState.getInt(TEAM_B_BALL);
+        overTeamB=savedInstanceState.getInt(TEAM_B_OVER);
+        wktTeamB=savedInstanceState.getInt(TEAM_B_WKT);
+        resultChoice=savedInstanceState.getInt(RESULT_CHOICE);
+        displayRunTeamA(runTeamA);
+        displayOverTeamA(overTeamA);
+        displayWktTeamA(wktTeamA);
+        displayBallTeamA(ballTeamA);
+        displayBallTeamB(ballTeamB);
+        displayRunTeamB(runTeamB);
+        displayOverTeamB(overTeamB);
+        displayWktTeamB(wktTeamB);
+        commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+        commentryB="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+"."+ballTeamB+" Overs.";
+        runDiff=runTeamA-runTeamB;
+        teamAWin= "TeamA Won The Game By " +runDiff+ " runs!" ;
+        wktDiff=10-wktTeamB;
+        teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+
+
+        displayResult(commentryA);
+        displayResultB(commentryB);
+        if (resultChoice==1){
+            displayFinalResult(teamAWin);
+
+        }
+        if (resultChoice==2){
+            displayFinalResult(teamBWin);
+
+        }
+
+        if (resultChoice==3){
+            displayFinalResult(draw);
+
+
+        }
+
+
+
     }
 
 
@@ -83,23 +155,24 @@ public class MainActivity extends AppCompatActivity {
 
         runTeamA=runTeamA+1;
         displayRunTeamA(runTeamA);
-        String commentry="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
-        displayResult(commentry);
+        commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+
+        displayResult(commentryA);
     }
 
     public void bndryTeamA(View view){
 
         runTeamA=runTeamA+4;
         displayRunTeamA(runTeamA);
-        String commentry="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
-        displayResult(commentry);
+        commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+        displayResult(commentryA);
          }
     public void sixTeamA(View view){
 
         runTeamA=runTeamA+6;
         displayRunTeamA(runTeamA);
-        String commentry="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
-        displayResult(commentry);
+        commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+        displayResult(commentryA);
     }
 
 
@@ -109,10 +182,10 @@ public class MainActivity extends AppCompatActivity {
             //String finalResult="Team A Batting Finished";
             overTeamA=20;
             ballTeamA=0;
-            String commentry="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+            commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
 
 
-            displayResult(commentry);
+            displayResult(commentryA);
         }
 
         if(overTeamA<=19){
@@ -135,8 +208,8 @@ public class MainActivity extends AppCompatActivity {
 
         displayOverTeamA(overTeamA);
         displayBallTeamA(ballTeamA);
-        String commentry="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
-        displayResult(commentry);
+        commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+        displayResult(commentryA);
     }
 
     public void addWktTeamA(View view) {
@@ -145,15 +218,19 @@ public class MainActivity extends AppCompatActivity {
 
             wktTeamA = wktTeamA + 1;
             displayWktTeamA(wktTeamA);
-            String commentry="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
-            displayResult(commentry);
+            commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+            displayResult(commentryA);
         }
 
         if (wktTeamA >9) {
-            String finalResult="Team A All Out";
+
             wktTeamA = 10;
             displayWktTeamA(wktTeamA);
-            displayResult(finalResult);
+            commentryA="TeamA Scored "+runTeamA+ " for "+wktTeamA+ " in "+overTeamA+"."+ballTeamA+" Overs.";
+
+
+            displayResult(commentryA);
+
         }
     }
 
@@ -190,22 +267,26 @@ public class MainActivity extends AppCompatActivity {
     public void oneRunTeamB(View view){
 
         runTeamB=runTeamB+1;
-        String commentry="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+" Overs.";
+        commentryB="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+" Overs.";
         displayRunTeamB(runTeamB);
-        displayResultB(commentry);
+        displayResultB(commentryB);
 
 
         if(runTeamB>runTeamA){
-            String result="Team B Won The Game.";
-            displayFinalResult(result);
+            resultChoice=2;
+            wktDiff=10-wktTeamB;
+            String teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+            //String result="Team B Won The Game.";
+            displayFinalResult(teamBWin);
 
 
 
         }
         if ((runTeamA==runTeamB) && (overTeamB>20)){
+            resultChoice=3;
 
-            String result=" The Game is Drawn!";
-            displayFinalResult(result);
+            //String result=" The Game is Drawn!";
+            displayFinalResult(draw);
 
 
         }
@@ -219,19 +300,22 @@ public class MainActivity extends AppCompatActivity {
 
         runTeamB=runTeamB+4;
         displayRunTeamB(runTeamB);
-        String commentry="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+" Overs.";
-        displayResultB(commentry);
+        //String commentry="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+" Overs.";
+        displayResultB(commentryB);
         if(runTeamB>runTeamA){
-            String result="Team B Won The Game.";
-            displayFinalResult(result);
+            resultChoice=2;
+            String teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+            //String result="Team B Won The Game.";
+            displayFinalResult(teamBWin);
 
 
 
         }
         if ((runTeamA==runTeamB) && (overTeamB>19)){
+            resultChoice=3;
 
-            String result=" The Game is Drawn!";
-            displayFinalResult(result);
+            //String result=" The Game is Drawn!";
+            displayFinalResult(draw);
 
 
         }
@@ -242,20 +326,25 @@ public class MainActivity extends AppCompatActivity {
 
         runTeamB=runTeamB+6;
         displayRunTeamB(runTeamB);
-        String commentry="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+" Overs.";
-        displayResultB(commentry);
+        commentryB="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+" Overs.";
+        displayResultB(commentryB);
 
         if(runTeamB>runTeamA){
-            String result="Team B Won The Game.";
-            displayFinalResult(result);
+            resultChoice=2;
+            wktDiff=10-wktTeamB;
+            String teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+
+            //String result="Team B Won The Game.";
+            displayFinalResult(teamBWin);
 
 
 
         }
         if ((runTeamA==runTeamB) && (overTeamB>19)){
+            resultChoice=3;
 
-            String result=" The Game is Drawn!";
-            displayFinalResult(result);
+            //String result=" The Game is Drawn!";
+            displayFinalResult(draw);
 
 
         }
@@ -280,29 +369,37 @@ public class MainActivity extends AppCompatActivity {
 
             displayOverTeamB(overTeamB);
             displayBallTeamB(ballTeamB);
-            String commentry = "TeamB Scored " + runTeamB + " for " + wktTeamB + " in " + overTeamB + "." + ballTeamB + " Overs.";
-            displayResultB(commentry);
+            commentryB = "TeamB Scored " + runTeamB + " for " + wktTeamB + " in " + overTeamB + "." + ballTeamB + " Overs.";
+            displayResultB(commentryB);
 
             if (overTeamB == 20) {
                 overTeamB = 20;
                 ballTeamB = 0;
-                String commentryfinal = "TeamB Scored " + runTeamB + " for " + wktTeamB + " in " + overTeamB + "." + ballTeamB + " Overs.";
-                displayResultB(commentryfinal);
+                commentryB = "TeamB Scored " + runTeamB + " for " + wktTeamB + " in " + overTeamB + "." + ballTeamB + " Overs.";
+                displayResultB(commentryB);
                 if (runTeamA > runTeamB) {
-                    String result = "Team A Won The Game!";
-                    displayFinalResult(result);
+                    resultChoice=1;
+                    runDiff=runTeamA-runTeamB;
+                    teamAWin= "TeamA Won The Game By " +runDiff+ " runs!" ;
+
+                    //String result = "Team A Won The Game!";
+                    displayFinalResult(teamAWin);
 
 
                 }
                 if (runTeamB > runTeamA) {
-                    String result = "Team B Won The Game!";
-                    displayFinalResult(result);
+                    resultChoice=2;
+                    wktDiff=10-wktTeamB;
+                    String teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+                    //String result = "Team B Won The Game!";
+                    displayFinalResult(teamBWin);
 
 
                 }
                 if (runTeamA == runTeamB) {
-                    String result = "The Game is Drawn!";
-                    displayFinalResult(result);
+                    resultChoice=3;
+                    //String result = "The Game is Drawn!";
+                    displayFinalResult(draw);
 
 
                 }
@@ -317,31 +414,39 @@ public class MainActivity extends AppCompatActivity {
 
             wktTeamB = wktTeamB + 1;
             displayWktTeamB(wktTeamB);
-            String commentry="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+"."+ballTeamB+" Overs.";
-            displayResultB(commentry);
+            commentryB="TeamB Scored "+runTeamB+ " for "+wktTeamB+ " in "+overTeamB+"."+ballTeamB+" Overs.";
+            displayResultB(commentryB);
         }
 
         if (wktTeamB > 9) {
-            String finalResult="Team B All Out!";
+            //String finalResult="Team B All Out!";
             wktTeamB = 10;
+            runDiff=runTeamA-runTeamB;
             displayWktTeamB(wktTeamB);
-            displayResultB(finalResult);
+            displayResultB(commentryB);
             if(runTeamA>runTeamB){
-                String result="Team A Won The Game!";
-                displayFinalResult(result);
+                resultChoice=1;
+                String teamAWin= "TeamA Won The Game By " +runDiff+ " runs!" ;
+
+                //String result="Team A Won The Game for "+runDiff+ " runs!";
+                displayFinalResult(teamAWin);
 
 
             }
             if(runTeamB>runTeamA){
-                String result="Team B Won The Game!";
-                displayFinalResult(result);
+                resultChoice=2;
+                wktDiff=10-wktTeamB;
+                String teamBWin= "TeamB Won The Game for "+wktDiff+ " Wickets!";
+                //String result="Team B Won The Game";
+                displayFinalResult(teamBWin);
 
 
 
             }
             if (runTeamA==runTeamB){
-                String result="The Game is Drawn!";
-                displayFinalResult(result);
+                resultChoice=3;
+                //String result="The Game is Drawn!";
+                displayFinalResult(draw);
 
             }
         }
@@ -386,6 +491,7 @@ public class MainActivity extends AppCompatActivity {
         wktTeamB=0;
         overTeamB=0;
         ballTeamB=0;
+        resultChoice=0;
         displayRunTeamA(runTeamA);
         displayWktTeamA(wktTeamA);
         displayOverTeamA(overTeamA);
