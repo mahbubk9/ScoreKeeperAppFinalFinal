@@ -136,6 +136,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="8dp"
                     android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorAccent"
                     android:onClick="oneRunTeamA"
                     android:text="1 run"
 
@@ -145,6 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="bndryTeamA"
+                    android:textColor="@color/colorAccent"
                     android:layout_gravity="center_horizontal"
                     android:text="Four"
                     />
@@ -154,6 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:onClick="sixTeamA"
+                    android:textColor="@color/colorAccent"
                     android:text="Six"
                     />
 
@@ -162,6 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:onClick="addBallTeamA"
+                    android:textColor="@color/colorAccent"
                     android:text="Ball"
                     />
 
@@ -170,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:onClick="addWktTeamA"
+                    android:textColor="@color/colorAccent"
                     android:text="wicket"
                     />
 
@@ -281,6 +286,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="8dp"
                     android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorAccent"
                     android:onClick="oneRunTeamB"
                     android:text="1 run"
                     />
@@ -290,6 +296,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:onClick="bndryTeamB"
+                    android:textColor="@color/colorAccent"
                     android:text="Four"
                     />
 
@@ -297,6 +304,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorAccent"
                     android:onClick="sixTeamB"
                     android:text="Six"
                     />
@@ -305,6 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorAccent"
                     android:onClick="addBallTeamB"
                     android:text="Ball"
                     />
@@ -313,6 +322,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorAccent"
                     android:onClick="addWktTeamB"
                     android:text="wicket"
                     />
@@ -389,6 +399,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text=" reset"
+                android:textColor="@color/colorAccent"
                 android:onClick="reset"
 
                 />
